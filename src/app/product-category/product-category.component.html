@@ -1,0 +1,19 @@
+<div>
+    <form class="form-horizontal" [formGroup]="searchForm">
+        <div class="form-group">
+            <label for="users" class="col-sm-2 control-label">Search Category</label>
+            <div class="col-sm-10">
+                <input type="text"
+                       id="users"
+                       formControlName="mySearch"
+                       #searchField (keyup)="0">
+            </div>
+        </div>
+        <div
+                *ngFor="let category of productCategoryParentDropDown | search : searchField.value;">
+            <div [hidden]="searchField.value == '' ">
+                {{ category.name }}
+            </div>
+        </div>
+    </form>
+</div>

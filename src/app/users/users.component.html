@@ -1,0 +1,26 @@
+<div>
+  <form class="form-horizontal" [formGroup]="searchForm">
+    <h1>Fetched Users</h1>
+    <div class="form-group">
+      <label for="users" class="col-sm-2 control-label">Search User</label>
+      <div class="col-sm-10">
+        <input type="text"
+               id="users"
+               formControlName="mySearch"
+               #searchField (keyup)="0">
+      </div>
+    </div>
+    <div *ngFor="let user of fetchedUsers | search : searchField.value;">
+      <div [hidden]="searchField.value == '' ">
+        {{ user.name }}
+      </div>
+    </div>
+    <hr>
+    <h1>Selected Users</h1>
+    <div *ngFor="let user of selectedUsers">
+      <div>
+        {{ user.name }}
+      </div>
+    </div>
+  </form>
+</div>
